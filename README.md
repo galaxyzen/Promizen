@@ -1,3 +1,8 @@
+<a href="https://promisesaplus.com/">
+    <img src="https://promisesaplus.com/assets/logo-small.png" alt="Promises/A+ logo"
+    title="Promises/A+ 1.0 compliant" align="right" />
+</a>
+
 # Promizen
 Promizen is an implementation of the Promises/A+ specification, passing the [promises-aplus/promises-tests](https://github.com/promises-aplus/promises-tests) test.
 
