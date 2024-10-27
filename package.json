@@ -1,0 +1,29 @@
+{
+  "name": "promizen",
+  "version": "0.0.1",
+  "description": "Promizen: a promise implementation of Promises/A+ specification",
+  "main": "index.js",
+  "scripts": {
+    "test": "promises-aplus-tests ./test/test_adapter.js",
+    "docs": "jsdoc -c jsdoc.json"
+  },
+  "author": "galaxyzen <xiangyul@hotmail.com> (https://github.com/galaxyzen)",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/galaxyzen/Promizen"
+  },
+  "license": "MIT",
+  "keywords": [
+    "promise",
+    "promises-aplus"
+  ],
+  "devDependencies": {
+    "eslint": "^8.57.1",
+    "eslint-config-standard": "^17.1.0",
+    "eslint-plugin-import": "^2.31.0",
+    "eslint-plugin-n": "^16.6.2",
+    "eslint-plugin-promise": "^6.6.0",
+    "promises-aplus-tests": "^2.1.2",
+    "jsdoc": "^4.0.4"
+  }
+}
