@@ -10,11 +10,16 @@ module.exports = {
     return new Promizen((_, reject) => reject(reason))
   },
   deferred () {
-    const promizen = new Promizen(() => {})
+    let resolveDeferred
+    let rejectDeferred
+    const promizen = new Promizen((resolve, reject) => {
+      resolveDeferred = resolve
+      rejectDeferred = reject
+    })
     return {
       promise: promizen,
-      resolve: promizen.resolve.bind(promizen),
-      reject: promizen.reject.bind(promizen)
+      resolve: resolveDeferred,
+      reject: rejectDeferred
     }
   }
 }

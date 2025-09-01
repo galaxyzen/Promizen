@@ -31,23 +31,24 @@ npm i promizen
 
 ## Usage
 ```js
-const Promizen = require('promizen')
+'use strict'
+
+const Promizen = require('./index')
 
 // create a new Promizen instance with an executor.
 const promizen = new Promizen((resolve, reject) => {
-  console.log("Hello!")
+  console.log('Hello!')
   setTimeout(() => { resolve('How are u?') }, 0)
 })
 
-// Promizen supports then chaining
-// The then method returns a new Promizen instance
+// Promizen supports `then` chaining
+// The `then` method returns a new Promizen instance
 const newPromizen = promizen.then((value) => {
-    console.log('First then:', value)
-    return "I'm fine, thanks, and u?"
-  }
-).then((value) => {
+  console.log('First then:', value)
+  return "I'm fine, thanks, and u?"
+}).then((value) => {
   console.log('Second then:', value)
-  throw "I'm not fine."
+  throw 'bad'
 }).catch((reason) => {
   console.error('Catch:', reason)
 })
@@ -62,45 +63,35 @@ setTimeout(() => { console.log('newPromizen:', newPromizen) }, 0)
  * output:
  * Hello!
  * promizen: Promizen {
- *   __fate: 'unresolved',
  *   state: 'pending',
  *   value: null,
  *   reason: null,
- *   __pendingHandlers: [
- *     {
- *       onFulfilled: [Function: fulfilledAction],
- *       onRejected: [Function: rejectedAction]
- *     }
- *   ]
+ *   then: [Function (anonymous)],
+ *   catch: [Function (anonymous)]
  * }
  * newPromizen Promizen {
- *   __fate: 'unresolved',
  *   state: 'pending',
  *   value: null,
  *   reason: null,
- *   __pendingHandlers: []
+ *   then: [Function (anonymous)],
+ *   catch: [Function (anonymous)]
  * }
  * First then: How are u?
  * Second then: I'm fine, thanks, and u?
- * Catch: I'm not fine.
+ * Catch: bad
  * promizen: Promizen {
- *   __fate: 'resolved',
  *   state: 'fulfilled',
  *   value: 'How are u?',
  *   reason: null,
- *   __pendingHandlers: [
- *     {
- *       onFulfilled: [Function: fulfilledAction],
- *       onRejected: [Function: rejectedAction]
- *     }
- *   ]
+ *   then: [Function (anonymous)],
+ *   catch: [Function (anonymous)]
  * }
  * newPromizen: Promizen {
- *   __fate: 'resolved',
  *   state: 'fulfilled',
  *   value: undefined,
  *   reason: null,
- *   __pendingHandlers: []
+ *   then: [Function (anonymous)],
+ *   catch: [Function (anonymous)]
  * }
  */
 ```
